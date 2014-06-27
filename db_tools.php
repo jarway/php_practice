@@ -19,5 +19,15 @@ class Db_tools {
 			or die('Select database failed!');
 		echo 'select database<br />';
 	}
+	
+	function query($sql) {
+		$result = mysql_query($sql);
+		$ret_ary = array();
+		while ($row = mysql_fetch_assoc($result))
+			$ret_ary[] = $row;
+		
+		mysql_free_result($result);
+		return $ret_ary;
+	}
 }
 ?>
