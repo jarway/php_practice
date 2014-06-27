@@ -5,22 +5,22 @@ class Db_tools {
 	function __construct($server, $user, $password) {
 		$this->link = mysql_connect($server, $user, $password)
 			or die('Connection failed!');
-		echo 'construct<br />';
+		//echo 'construct<br />';
 	}
 	
 	function __destruct() {
 		if ($this->link)
 			mysql_close($this->link);
-		echo 'destruct<br />';
+		//echo 'destruct<br />';
 	}
 	
 	function select_db($database) {
 		mysql_select_db($database)
 			or die('Select database failed!');
-		echo 'select database<br />';
+		//echo 'select database<br />';
 	}
 	
-	function query($sql) {
+	function &query($sql) {
 		$result = mysql_query($sql);
 		$ret_ary = array();
 		while ($row = mysql_fetch_assoc($result))
