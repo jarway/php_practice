@@ -8,7 +8,7 @@
 	$db_tools = new Db_tools('localhost', 'root', 'mypassword');
 	$db_tools->select_db('andy_db');
 
-	$sql = "SELECT * FROM users where account = '$account' AND password = '$password'";	
+	$sql = "SELECT * FROM users WHERE account = '$account' AND password = '$password'";	
 	$users = $db_tools->query($sql);
 ?>
 

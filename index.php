@@ -30,8 +30,8 @@
 <body>
 
 <form name="formLogin" action="checkpwd.php" method="post">
-	Account : <input type="text" name="account" id="account"><br />
-	Password: <input type="password" name="password" id="password"><br />
+	Account : <input type="text" name="account" id="account" /><br />
+	Password: <input type="password" name="password" id="password" /><br />
 	<input type="button" value="login" onclick="formLogin.submit()">
 	<input type="reset" value="reset">
 </form>

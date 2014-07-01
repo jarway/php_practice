@@ -5,6 +5,7 @@ class Db_tools {
 	function __construct($server, $user, $password) {
 		$this->link = mysql_connect($server, $user, $password)
 			or die('Connection failed!');
+		mysql_query('SET NAMES utf8');
 		//echo 'construct<br />';
 	}
 	
@@ -22,12 +23,25 @@ class Db_tools {
 	
 	function &query($sql) {
 		$result = mysql_query($sql);
-		$ret_ary = array();
-		while ($row = mysql_fetch_assoc($result))
-			$ret_ary[] = $row;
+		$ret = false;
 		
-		mysql_free_result($result);
-		return $ret_ary;
+		list($cmd) = explode(' ', $sql, 2);
+		switch (strtolower($cmd)) {
+		case 'select':
+			$ret_ary = array();
+			while ($row = mysql_fetch_object($result))
+				$ret_ary[] = $row;
+			$ret = $ret_ary;
+			mysql_free_result($result);
+			break;
+		case 'update':
+			$ret = mysql_affected_rows();
+			break;
+		default:
+			echo 'Invalid SQL command!';
+		}
+		
+		return $ret;
 	}
 }
 ?>

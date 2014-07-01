@@ -21,13 +21,10 @@
 </head>
 <body>
 	<h1><?php echo 'Hello, '.$account.'~'; ?></h1>
-	<p>
-		<a href="modify.php">Modify</a>&nbsp;
-		<a href="logout.php">Logout</a>
-	</p>
-	<ul>
-		<li>Name: <?php echo $user->name;?></li>
-		<li>Age: <?php echo $user->age;?></li>
-	</ul>
+	<form name="formSettings" method="post" action="update.php">
+		Name : <input type="text" name="user_name" value="<?php echo $user->name;?>" /><br />
+		Age : <input type="text" name="user_age" value="<?php echo $user->age;?>" /><br />
+		<input type="submit" value="Submit" />
+	</form>
 </body>
 </html>
