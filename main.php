@@ -23,6 +23,7 @@
 	<h1><?php echo 'Hello, '.$account.'~'; ?></h1>
 	<p>
 		<a href="modify.php">Modify</a>&nbsp;
+		<a href="delete.php">Delete</a>&nbsp;
 		<a href="logout.php">Logout</a>
 	</p>
 	<ul>

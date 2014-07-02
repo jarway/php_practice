@@ -9,33 +9,38 @@
     <script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.8.0.js"></script>
     <script type="text/javascript">
 	$(document).ready(function() {
-		$("#btnLogin").click(function() {
+		$("#account").select();
+		
+		$("#btnJoin").click(function() {
 			var account = $("#account").attr("value");
 			var password = $("#password").attr("value");
+			var user_name = $("#user_name").attr("value");
 
-			if (account.length === 0 || password.length === 0) {
+			if (account.length === 0 || password.length === 0 || user_name.length === 0) {
 				alert("Data empty!");
 				if (account.length === 0)
 					$("#account").focus();
-				else
+				else if (password.length === 0)
 					$("#password").focus();
+				else
+					$("#user_name").focus();
 				return;
 			}
 				
-			formLogin.submit(); //can also use: document.formLogin.submit();
+			formJoin.submit(); //can also use: document.formJoin.submit();
 		});	
 	});
     </script>
 </head>
 <body>
-	<form name="formLogin" action="checkpwd.php" method="post">
+	<h1>Welcome to join us!!</h1>
+	<form name="formJoin" action="addmember.php" method="post">
 		Account : <input type="text" name="account" id="account" /><br />
 		Password: <input type="password" name="password" id="password" /><br />
-		<input type="button" value="login" id="btnLogin">
+		Name: <input type="text" name="user_name" id="user_name" /><br />
+		Age: <input type="text" name="user_age" id="user_age" /><br />
+		<input type="button" value="Join" id="btnJoin">
 		<input type="reset" value="reset">
 	</form>
-	<p>
-		<a href="join.php">Join</a>
-	</p>
 </body>
 </html>

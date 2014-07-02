@@ -14,7 +14,7 @@
 
 <?php if (count($users)): ?>
 	<?php
-		setcookie('account', $users[0]['account']);
+		setcookie('account', $users[0]->account);
 		setcookie('passed', 1);
 		header('location:main.php');	
 	?>
